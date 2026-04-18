@@ -1,11 +1,18 @@
 'use client'
 import { useEffect, useState } from 'react'
+import dynamic from 'next/dynamic'
 import { supabase } from '@/lib/supabase'
 import AdminShell from '@/components/AdminShell'
-import {
-  AreaChart, Area, BarChart, Bar,
-  XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-} from 'recharts'
+
+const AreaChart = dynamic(() => import('recharts').then(m => m.AreaChart), { ssr: false }) as any
+const Area = dynamic(() => import('recharts').then(m => m.Area), { ssr: false }) as any
+const BarChart = dynamic(() => import('recharts').then(m => m.BarChart), { ssr: false }) as any
+const Bar = dynamic(() => import('recharts').then(m => m.Bar), { ssr: false }) as any
+const XAxis = dynamic(() => import('recharts').then(m => m.XAxis), { ssr: false }) as any
+const YAxis = dynamic(() => import('recharts').then(m => m.YAxis), { ssr: false }) as any
+const CartesianGrid = dynamic(() => import('recharts').then(m => m.CartesianGrid), { ssr: false }) as any
+const Tooltip = dynamic(() => import('recharts').then(m => m.Tooltip), { ssr: false }) as any
+const ResponsiveContainer = dynamic(() => import('recharts').then(m => m.ResponsiveContainer), { ssr: false }) as any
 
 interface DailyCount { date: string; count: number }
 interface EventCount { event_name: string; count: number }
