@@ -32,7 +32,7 @@ export default function LoginPage() {
 
     if (userError || !user?.is_admin) {
       await supabase.auth.signOut()
-      setError('Access denied. Admin privileges required.')
+      setError(`Debug: userError=${JSON.stringify(userError)}, user=${JSON.stringify(user)}, authId=${data.user.id}`)
       setLoading(false)
       return
     }
